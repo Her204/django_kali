@@ -1,0 +1,140 @@
+{% extends "lito_django/base.html" %}
+{% block title %} View list {% endblock %}
+{% block content %}
+	<h1>{{ls.name}} with id --> {{ls.id}}</h1>
+	<form method="post" action="#">
+		{% csrf_token %}
+		{% for item in ls.item_set.all %}
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<div class="input-group-text">
+					{% if item.complete == True %}
+						<input type="checkbox" value="clicked" name="c{{item.id}}" checked>
+					{% else %}
+						<input type="checkbox" value="clicked" name="c{{item.id}}" checked>
+					{% endif %}
+				</div>
+			</div>
+			<input type="text" value="{{item.text}}" class="form-control">
+		</div>
+		{% endfor %}
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<button type="submit" name="newItem" value="newItem" class="btn btn-success">Add Item</button>
+			</div>
+			<input type="text" name="new">
+		</div>
+		<button type="submit" name="save" value="save" class="btn btn-success">Save</button>
+	</form>
+	<script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+	<div name="guia-ordenadora">
+	<div style="border-style:solid;border-width:1vw;border-color:white;"></div>
+		<div id="herbertdiv" style="position:right;width:50vw;
+															border-style:solid;border-width:0.25vw;border-color:black;"></div>
+	  <div style="border-style:solid;border-width:1vw;border-color:white;"></div>
+		<script type="text/javascript">
+			function cardioid(input_x){
+				let x_var = [];
+				let y_var = [];
+				let c = 0;
+				let d = 0;
+				let pi = Math.PI;
+				let base = 260;
+				for (let b=0;b<base*2;b++){
+					let x = 2*pi/(base*2);
+					let y = input_x*x;
+					let point_x = Math.cos(c-pi/2);
+					let point_y = 1+Math.sin(c-pi/2);
+					let point2_x = Math.cos(d-pi/2);
+					let point2_y = 1+Math.sin(d-pi/2);
+					let guia = 0;
+					let guia_2 = 0;
+					x_var.push(point_x);
+					x_var.push(point2_x);
+					y_var.push(point_y);
+					y_var.push(point2_y);
+					c += x;
+					d += y;
+					 };
+				return [x_var,y_var];
+			};
+			let api_vals = parseInt("{{ls.id}}");
+			let data = [];
+			let steps = [];
+			let [x_0,y_0] = cardioid(api_vals);
+			let trace0 = {
+				x: x_0,
+				y: y_0,
+				mode: "line",
+				type: "scatter",
+				color: "black",
+				name: "Cardioid ",
+				marker: {size: 0.5,color:"black"}
+			};
+			for (let o=api_vals; o<api_vals+6;o++){
+				let [x,y] = cardioid(o*4);
+				let trace1 = {
+					data: [{x:x,y:y}],
+					name: "Cardioid "+o.toString()+"^3"+" = "+(o**3).toString()
+				};
+				let step1 = {
+					label: "Cardioid "+o.toString()+"^3"+" = "+(o**3).toString(),
+					method: "animate",
+				  args: [["Cardioid "+o.toString()+"^3"+" = "+(o**3).toString()],
+					{
+						mode:"inmediate",
+				  	frame:{redraw:false,duration:500},
+				  	transition: {duration:500}
+					}]
+				};
+				data.push(trace1);
+				steps.push(step1);
+			};
+			let layout = {
+				  //autosize:true,
+					sliders:[{
+						pad:{t:30},
+						x:0.05,
+						len:0.95,
+						currentvalue:{
+							xanchor: "right",
+							prefix: "options: ",
+							font: {
+								color: '#888',
+								size: 20
+							}
+						},
+						transition: {duration:500},
+						steps:steps
+					}],
+					updatemenus:[{
+							type:"buttons",
+							showactive: false,
+							x:0.05,
+							y:0,
+							xanchor:"right",
+							yanchor:"top",
+							pad:{t:60,r:30},
+							buttons:[{
+								label: "Play",
+								method: "animate",
+								args: [null,{
+									fromcurrent: true,
+									frame: {redraw:false, duration: 1000},
+									transition: {duration: 500}
+								}]
+							}]
+						}],
+				  xaxis: {
+						range: [2*Math.min.apply(null,data[0]["x"]),
+										2*Math.max.apply(null,data[0]["x"])]},
+					yaxis:{
+						range: [Math.min.apply(null,data[0]["y"]),
+										Math.max.apply(null,data[0]["y"])]},
+					height:1000,width:1000,
+					title: "Cardioid "+api_vals.toString()
+			};
+			Plotly.newPlot("herbertdiv",{data:[trace0],layout:layout,frames:data});
+		</script>
+
+{% endblock %}

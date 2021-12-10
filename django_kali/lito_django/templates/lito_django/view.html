@@ -1,0 +1,12 @@
+{% extends "lito_django/base.html" %}
+{% block title %}
+View
+{% endblock %}
+{% block content %}
+  <div class="exts">
+	<h1> List </h1>
+	{% for td in user.todolist.all %}
+		<p><a href="/{{td.id}}">{{td.name}}</a></p>
+	{% endfor %}
+	</div>
+{% endblock %}
