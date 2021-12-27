@@ -15,18 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
-from register import views as v
-from plotlyplot import views as v_2
-from mandelbrot import views as v_3
+from register import views as v_register
+from plotlyplot import views as v_plotlyplot
+from mandelbrot import views as v_mandelbrot
 urlpatterns = [
     path("",include("lito_django.urls")),
     path("<int:id>",include("lito_django.urls")),
     path("home",include("lito_django.urls")),
     path("create/",include("lito_django.urls")),
-    path("register/",v.register,name="register"),
+    path("register/",v_register.register,name="register"),
     path('admin/', admin.site.urls),
     path("",include("django.contrib.auth.urls")),
-    path("plot/",v_2.plot_fao,name="plot_fao"),
-    path("plot_2/",v_3.plot_fao_2,name="plot_fao_2"),
+    path("plot/",v_plotlyplot.plot_fao,name="plot_fao"),
+    path("plot_2/",v_mandelbrot.plot_fao_2,name="plot_fao_2"),
     path("django_plotly_dash/",include("django_plotly_dash.urls"))
 ]

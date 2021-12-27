@@ -45,30 +45,3 @@ def create(response):
 
 def view(response):
     return render(response,"lito_django/view.html",{})
-
-from django.views.generic import TemplateView
-from chartjs.views.lines import BaseLineChartView
-import pandas as pd
-
-df = pd.read_csv("../../DATA_ANALYSIS/sales_data.csv")
-
-
-class LineChartJSONView(BaseLineChartView):
-    def get_labels(self):
-        #"""Return 7 labels for the x-axis."""
-        return df.Day.sort_values().unique().tolist()
-
-    def get_providers(self):
-        #"""Return names of datasets."""
-        return ["Cost","Profit","Revenue"]
-
-    def get_data(self):
-        #"""Return 3 datasets to plot."""
-
-        return [df.Cost.tolist()[:10500],
-                df.Profit.tolist()[:10500],
-                df.Revenue.tolist()[:10500]]
-
-
-line_chart = TemplateView.as_view(template_name='lito_django/line_chart.html')
-line_chart_json = LineChartJSONView.as_view()

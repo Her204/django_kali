@@ -8,13 +8,7 @@ from scipy import ndimage
 from django.shortcuts import render
 from plotly.offline import plot
 import plotly.graph_objects as go
-from plotly.offline import init_notebook_mode, iplot
-import plotly.offline as py
-import plotly.io as pio
 import pandas as pd
-import cufflinks as cf
-from IPython.display import display, HTML
-import plotly.io as pio
 import plotly
 
 # Create your views here.

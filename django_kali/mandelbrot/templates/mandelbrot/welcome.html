@@ -7,16 +7,20 @@
 		text-align:right;
 	}
 </style>
-<h1>Herbert Vente Professional DashBoard Web Site 2</h1>
+<h1 style="font-size:2vw;">Herbert Vente Professional DashBoard Web Site 2</h1>
 	<div style="height: 100%; width:100%">
 	</div>
   <form method="post" action="#">
 		{% csrf_token %}
-		<div class="input-group mb-3">
+		<div class="input-group mb-3" style="font-size:1.5vw">
 			<div class="input-group-prepend">
-				<button type="submit" name="list_values" value="newItem" class="btn btn-success">Visualize</button>
+				<button style="font-size:1.5vw"
+						type="submit" name="list_values"
+						value="newItem" class="btn btn-success">Visualize</button>
 			</div>
-			<input type="text" name="newvalue"> Put some integer or float to plot a fractal representation grouped on mandelbrot set
+			<input type="text" name="newvalue" style="font-size:1.5vw">
+			 	<p style="font-size:1.5vw"
+				>Put some integer or float to plot a fractal representation grouped on mandelbrot set
 		</div>
 		{{ plot1 | safe }}
 		{{ plot2 | safe }}

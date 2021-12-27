@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     "plotlyplot.apps.PlotlyplotConfig",
     "mandelbrot.apps.MandelbrotConfig",
-    'chartjs',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
     'channels_redis'

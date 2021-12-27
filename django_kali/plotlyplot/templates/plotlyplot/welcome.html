@@ -5,21 +5,23 @@
 <style>
 	h1 {
 		text-align:right;
+		font-size:2vw;
 	}
 </style>
-<h1>Herbert Vente Professional DashBoard Web Site</h1>
+<h1 style="font-size:2vw;">Herbert Vente Professional DashBoard Web Site</h1>
 		<div style="height: 100%; width: 100%">
 			<form method="post" action="#">
 				{% csrf_token %}
 
 				<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<button type="submit" name="new-1a" value="newItem" class="btn btn-success">Visualize</button>
+					<button type="submit" name="new-1a" value="newItem"
+									class="btn btn-success" style="font-size:1vw">Visualize</button>
 				</div>
-				<select name="newa">
+				<select name="newa" style="font-size:1vw">
 				<optgroup label="visualizations">
 				{% for a in data %}
-				    <option value={{a}} selected="selected">{{a}}</option>
+				    <option value={{a}} selected="selected" style="font-size:1vw">{{a}}</option>
 				{% endfor %}
 				</optgroup>
 				</select>

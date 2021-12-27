@@ -23,11 +23,11 @@
     }
     .exts{
   		height:100%;
-  		width:15vw;
+  		width:20vw;
   		position:fixed;
   		z-index:1;
   		top:0;
-  		left:85vw;
+  		left:80vw;
   		background-color:#111;
   		overflow-x: :hidden;
   		padding-top:20px;
@@ -39,10 +39,15 @@
   		color: #818181;
   		display:block;
   	}
+    .exts a:hover{
+  		color:#f1f1f1;
+      background-color:#555;
+  	}
   	.sidenav{
   		height:100%;
   		width:15vw;
   		position:fixed;
+      opacity:0.8;
   		z-index:1;
   		top:0;
   		left:0;
@@ -53,12 +58,22 @@
   	.sidenav a {
   		padding:6px 8px 6px 16px;
   		text-decoration: none;
-		font-size:25px;
+		  font-size:1.5vw;
   		color: #818181;
   		display:block;
   	}
+    .sidenav :hover{
+      background-color:#111;
+      color:#fff;
+      font-size:2vw;
+      border-style:solid;
+      border-color:black;
+      border-width:0.25vw;
+      width:25vw;
+    }
   	.sidenav a:hover{
-  		color:#f1f1f1;
+  		color:#fff;
+      background-color:#555;
   	}
   	.lito_django{
   		margin-left:160px;
@@ -107,40 +122,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% block title%} Herbert Site {% endblock %}</title>
+  <title>{% block title%} Sitio Web Personal Herbert (Lito) {% endblock %}</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js" charset="utf-8"></script>
 </head>
-<body>
+<body background="https://forbes.es/wp-content/uploads/2021/10/dogecoin-og-logo.png"
+             style="background-color:#fff">
 
   <div class="sidenav">
-  <h1> Dashing and Other stuff </h1>
-	<a href="/home">Home</a>
-  <a href="/login">Login</a>
-  <a href="/logout">Logout</a>
-  <a href="/register">Sign in</a>
-	<a href="/create">Create</a>
-	<a href="/view">View</a>
-  <a href="/plot">Dashboard</a>
-  <a href="/plot_2">Dashboard_2</a>
+  <h1 style="font-size:2vw;color:#777;"> Visualizaciones y mas cosas </h1>
+	<a href="/home" style="">Pagina Principal</a>
+  <a href="/login" style="">Ingresa (Log In)</a>
+  <a href="/logout" style="">Cerrar Sesion (Log Out)</a>
+  <a href="/register" style="">Crea una cuenta (Sign In)</a>
+	<a href="/create" style="">Crea una lista nueva</a>
+	<a href="/view" style="">Personas que adoro</a>
+  <a href="/plot" style="">Dashboard</a>
+  <a href="/plot_2" style="">Dashboard_2</a>
   </div>
   <div id="content" name="content" class="lito_django">
   	<div class="row justify-content-center" style="width:75vw,right:25vw">
-	  <div class="col-8" style="position:center;">
-		  <h1 class="mt-2">Lito Web Site</h1>
+	  <div class="col-8" style="position:center">
+		  <h1 class="mt-2" style="background-color:#333;color:#fff;font-size:3vw;
+                        font-style:italic;width:50vw"> Cosas que adoro ...</h1>
       <div class="descripcion">
-      <p><h2> - Just enjoy the plots and charts</h2>
+      <img src="https://astelus.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada.jpg"
+            style="width:50vw;height:40vw;border-color:#111;
+            border-style:solid;border-width:1vw;">
+      <p><h2 style="background-color:#333;color:#fff;width:50vw;border-style:solid;font-style:italic;font-size:2vw;
+                    border-width:0.25vw;border-color:black">
+                  Este sitio web lo desarrolle con el fin de mejorar mis habilidades
+                   en python, django, bash, postgresql,
+                   javascript, plotly, AWS, Docker y mas tecnologias
+                  pero finalmente decidi volverlo algo mas personal...</h2>
       </div>
-		  <hr class="mt-0 mb-4">
+		  <hr class="mt-0 mb-4" style="width:30vw">
   		  {% block content %}
   		  {% endblock %}
       <div style="width:50vw;">
         <button onclick="anim1();" style = "position:right;width:50vw;
-                                          border-style:solid;border-width:0.25vw;border-color:black;">Donut Spin</button>
+                                          border-style:solid;border-width:0.25vw;border-color:black;">Donut spin</button>
 
 
-        <pre id="d" style="background-color:#fff; color:#000;
+        <pre id="d" style="background-color:#222; color:#fff;
                          width:50vw;position:center;border-color:black;
-                         border-width:0.25vw;border-style:solid; font-size:20pt;"></pre>
+                         border-width:0.25vw;border-style:solid; font-style:italic;font-size:1.2vw"></pre>
       </div>
       <script type="text/javascript">
       (function() {
@@ -161,8 +186,8 @@
               b[k] = "\n";
             }
             else{
-              let x = "Free Donuts !!! just delivery from this platform";
-              for(let rang=0;rang<6;rang++){
+              let x = "- Trabajar duro e inteligente para ser lo mejor posible -";
+              for(let rang=0;rang<5;rang++){
                 x+=x;
               }
               b[k] = x[k];

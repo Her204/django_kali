@@ -21,6 +21,7 @@
   		top:0;
   		left:80vw;
       font-size: 36px;
+      opacity:0.8;
   		background-color:#111;
   		overflow-x: :hidden;
   		padding-top:20px;
@@ -40,6 +41,7 @@
   	}
   	.sidenav a:hover{
   		color:#f1f1f1;
+      background-color:#555;
   	}
   	.lito_django{
   		margin-left:160px;
@@ -106,17 +108,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% block title%} Herbert Site {% endblock %}</title>
+  <title>{% block title%} Sitio Web Personal Herbert(Lito) {% endblock %}</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js" charset="utf-8"></script>
 </head>
-<body id="page-top">
+<body background="https://forbes.es/wp-content/uploads/2021/10/dogecoin-og-logo.png"
+             style="background-color:#fff" id="page-top">
 
   <div class="sidenav">
-	  <a href="/home">Home</a>
-	  <a href="/create">Create</a>
-	  <a href="/view">View</a>
-    <a href="/plot">Dashboard</a>
-    <a href="/plot_2">Dashboard_2</a>
+	  <a href="/home" style="font-size:2vw">Pagina Basica</a>
+	  <a href="/create" style="font-size:2vw">Crea una Cuenta</a>
+	  <a href="/view" style="font-size:2vw">Vista de prueba</a>
+    <a href="/plot" style="font-size:2vw">Dashboard</a>
+    <a href="/plot_2" style="font-size:2vw">Dashboard_2</a>
   </div>
   <div id="wrapper">
     <div id="content-wrapper" class="d-flex flex-column">
